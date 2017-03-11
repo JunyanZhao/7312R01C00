@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		64DB3DC61E74BF8C000908C4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64DB3DC51E74BF8C000908C4 /* main.cpp */; };
+		64DB3DCA1E74C285000908C4 /* CParseXML.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64DB3DC81E74C285000908C4 /* CParseXML.cpp */; };
+		64DB3DD21E74C2D1000908C4 /* tinystr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64DB3DCC1E74C2D1000908C4 /* tinystr.cpp */; };
+		64DB3DD31E74C2D1000908C4 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64DB3DCE1E74C2D1000908C4 /* tinyxml.cpp */; };
+		64DB3DD41E74C2D1000908C4 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64DB3DD01E74C2D1000908C4 /* tinyxmlerror.cpp */; };
+		64DB3DD51E74C2D1000908C4 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64DB3DD11E74C2D1000908C4 /* tinyxmlparser.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +30,14 @@
 /* Begin PBXFileReference section */
 		64DB3DBB1E74BF40000908C4 /* R01C00 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = R01C00; sourceTree = BUILT_PRODUCTS_DIR; };
 		64DB3DC51E74BF8C000908C4 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = main/main.cpp; sourceTree = SOURCE_ROOT; };
+		64DB3DC81E74C285000908C4 /* CParseXML.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CParseXML.cpp; path = CParseXML/CParseXML.cpp; sourceTree = "<group>"; };
+		64DB3DC91E74C285000908C4 /* CParseXML.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CParseXML.hpp; path = CParseXML/CParseXML.hpp; sourceTree = "<group>"; };
+		64DB3DCC1E74C2D1000908C4 /* tinystr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tinystr.cpp; path = tinyxml/tinystr.cpp; sourceTree = "<group>"; };
+		64DB3DCD1E74C2D1000908C4 /* tinystr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tinystr.h; path = tinyxml/tinystr.h; sourceTree = "<group>"; };
+		64DB3DCE1E74C2D1000908C4 /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tinyxml.cpp; path = tinyxml/tinyxml.cpp; sourceTree = "<group>"; };
+		64DB3DCF1E74C2D1000908C4 /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tinyxml.h; path = tinyxml/tinyxml.h; sourceTree = "<group>"; };
+		64DB3DD01E74C2D1000908C4 /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tinyxmlerror.cpp; path = tinyxml/tinyxmlerror.cpp; sourceTree = "<group>"; };
+		64DB3DD11E74C2D1000908C4 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tinyxmlparser.cpp; path = tinyxml/tinyxmlparser.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +54,9 @@
 		64DB3DB21E74BF40000908C4 = {
 			isa = PBXGroup;
 			children = (
+				64DB3DC71E74C254000908C4 /* CparseXML */,
 				64DB3DBD1E74BF40000908C4 /* main */,
+				64DB3DCB1E74C297000908C4 /* tinyXML */,
 				64DB3DBC1E74BF40000908C4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,6 +76,28 @@
 			);
 			name = main;
 			path = R01C00;
+			sourceTree = "<group>";
+		};
+		64DB3DC71E74C254000908C4 /* CparseXML */ = {
+			isa = PBXGroup;
+			children = (
+				64DB3DC81E74C285000908C4 /* CParseXML.cpp */,
+				64DB3DC91E74C285000908C4 /* CParseXML.hpp */,
+			);
+			name = CparseXML;
+			sourceTree = "<group>";
+		};
+		64DB3DCB1E74C297000908C4 /* tinyXML */ = {
+			isa = PBXGroup;
+			children = (
+				64DB3DCC1E74C2D1000908C4 /* tinystr.cpp */,
+				64DB3DCD1E74C2D1000908C4 /* tinystr.h */,
+				64DB3DCE1E74C2D1000908C4 /* tinyxml.cpp */,
+				64DB3DCF1E74C2D1000908C4 /* tinyxml.h */,
+				64DB3DD01E74C2D1000908C4 /* tinyxmlerror.cpp */,
+				64DB3DD11E74C2D1000908C4 /* tinyxmlparser.cpp */,
+			);
+			name = tinyXML;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -121,6 +158,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				64DB3DC61E74BF8C000908C4 /* main.cpp in Sources */,
+				64DB3DD31E74C2D1000908C4 /* tinyxml.cpp in Sources */,
+				64DB3DD21E74C2D1000908C4 /* tinystr.cpp in Sources */,
+				64DB3DD41E74C2D1000908C4 /* tinyxmlerror.cpp in Sources */,
+				64DB3DD51E74C2D1000908C4 /* tinyxmlparser.cpp in Sources */,
+				64DB3DCA1E74C285000908C4 /* CParseXML.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
