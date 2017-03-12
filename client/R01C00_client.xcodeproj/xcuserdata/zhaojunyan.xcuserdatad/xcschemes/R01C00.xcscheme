@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "64DB3DBA1E74BF40000908C4"
-               BuildableName = "R01C00"
-               BlueprintName = "R01C00"
-               ReferencedContainer = "container:R01C00.xcodeproj">
+               BuildableName = "R01C00_client"
+               BlueprintName = "R01C00_client"
+               ReferencedContainer = "container:R01C00_client.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "64DB3DBA1E74BF40000908C4"
-            BuildableName = "R01C00"
-            BlueprintName = "R01C00"
-            ReferencedContainer = "container:R01C00.xcodeproj">
+            BuildableName = "R01C00_client"
+            BlueprintName = "R01C00_client"
+            ReferencedContainer = "container:R01C00_client.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "64DB3DBA1E74BF40000908C4"
-            BuildableName = "R01C00"
-            BlueprintName = "R01C00"
-            ReferencedContainer = "container:R01C00.xcodeproj">
+            BuildableName = "R01C00_client"
+            BlueprintName = "R01C00_client"
+            ReferencedContainer = "container:R01C00_client.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "64DB3DBA1E74BF40000908C4"
-            BuildableName = "R01C00"
-            BlueprintName = "R01C00"
-            ReferencedContainer = "container:R01C00.xcodeproj">
+            BuildableName = "R01C00_client"
+            BlueprintName = "R01C00_client"
+            ReferencedContainer = "container:R01C00_client.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

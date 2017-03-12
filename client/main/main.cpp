@@ -10,7 +10,7 @@
 using namespace std;
 int main(int argc, const char * argv[]) {
     // insert code here...
-    std::cout << "Hello, World! The program is starting! \n";
+    std::cout << "Hello, World! The client is starting! \n";
     std::cout << "input something"<<std::endl;
     string str;
     cin>>str;

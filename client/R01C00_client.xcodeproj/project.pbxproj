@@ -28,7 +28,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		64DB3DBB1E74BF40000908C4 /* R01C00 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = R01C00; sourceTree = BUILT_PRODUCTS_DIR; };
+		64DB3DBB1E74BF40000908C4 /* R01C00_client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = R01C00_client; sourceTree = BUILT_PRODUCTS_DIR; };
 		64DB3DC51E74BF8C000908C4 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = main/main.cpp; sourceTree = SOURCE_ROOT; };
 		64DB3DC81E74C285000908C4 /* CParseXML.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CParseXML.cpp; path = CParseXML/CParseXML.cpp; sourceTree = "<group>"; };
 		64DB3DC91E74C285000908C4 /* CParseXML.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CParseXML.hpp; path = CParseXML/CParseXML.hpp; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 		64DB3DBC1E74BF40000908C4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				64DB3DBB1E74BF40000908C4 /* R01C00 */,
+				64DB3DBB1E74BF40000908C4 /* R01C00_client */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,9 +103,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		64DB3DBA1E74BF40000908C4 /* R01C00 */ = {
+		64DB3DBA1E74BF40000908C4 /* R01C00_client */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 64DB3DC21E74BF40000908C4 /* Build configuration list for PBXNativeTarget "R01C00" */;
+			buildConfigurationList = 64DB3DC21E74BF40000908C4 /* Build configuration list for PBXNativeTarget "R01C00_client" */;
 			buildPhases = (
 				64DB3DB71E74BF40000908C4 /* Sources */,
 				64DB3DB81E74BF40000908C4 /* Frameworks */,
@@ -115,9 +115,9 @@
 			);
 			dependencies = (
 			);
-			name = R01C00;
+			name = R01C00_client;
 			productName = R01C00;
-			productReference = 64DB3DBB1E74BF40000908C4 /* R01C00 */;
+			productReference = 64DB3DBB1E74BF40000908C4 /* R01C00_client */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -135,7 +135,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 64DB3DB61E74BF40000908C4 /* Build configuration list for PBXProject "R01C00" */;
+			buildConfigurationList = 64DB3DB61E74BF40000908C4 /* Build configuration list for PBXProject "R01C00_client" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -147,7 +147,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				64DB3DBA1E74BF40000908C4 /* R01C00 */,
+				64DB3DBA1E74BF40000908C4 /* R01C00_client */,
 			);
 		};
 /* End PBXProject section */
@@ -273,7 +273,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		64DB3DB61E74BF40000908C4 /* Build configuration list for PBXProject "R01C00" */ = {
+		64DB3DB61E74BF40000908C4 /* Build configuration list for PBXProject "R01C00_client" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				64DB3DC01E74BF40000908C4 /* Debug */,
@@ -282,7 +282,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		64DB3DC21E74BF40000908C4 /* Build configuration list for PBXNativeTarget "R01C00" */ = {
+		64DB3DC21E74BF40000908C4 /* Build configuration list for PBXNativeTarget "R01C00_client" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				64DB3DC31E74BF40000908C4 /* Debug */,
