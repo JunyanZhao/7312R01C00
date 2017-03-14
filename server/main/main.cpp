@@ -28,7 +28,7 @@ void *recvMsgFun(void *arg)
 {
     int sockfd = (int)(*(int*)arg);
     cout<<"recv msg, sockfd: "<<sockfd<<endl;
-    printf("reveiving msg: ");
+    printf("reveiving msg: \n");
     char buf[1024];
     unsigned int len = 0;
     while (1) {
@@ -37,14 +37,22 @@ void *recvMsgFun(void *arg)
             continue;
         }
         buf[len] = '\0';
+        if (0==len) {
+            cout<<"len=0"<<endl;
+            continue;
+        }
         cout<<"recv: "<<buf<<endl;
-        char *msg = "I am received!";
+        char *msg = "msg received!";
         if (send(sockfd, msg, strlen(msg), 0) == -1) {
             perror("write error");
         }
+        if (strcmp(buf, "quit") == 0) {
+            cout<<"close socket"<<endl;
+            break;
+        }
 
     }
-    
+    return NULL;
 }
 
 int main(int argc, const char * argv[]) {
@@ -64,9 +72,15 @@ int main(int argc, const char * argv[]) {
     while (1) {
         int sin_size = sizeof(struct sockaddr_in);
         if ((new_fd=accept(sockfd, (struct sockaddr *)&cliaddr, (unsigned int *)&sin_size))==-1) {
-            close(sockfd);
-            break;
+            perror("accept error");
+            exit(1);
         }
+        pid_t revMsgPid;
+        pthread_t revMsgThreadID;
+        if ((pthread_create(&revMsgThreadID, NULL, recvMsgFun, &new_fd)) != 0) {
+            perror("create thread failed");
+        }
+        continue;
         //int ret = accept(sockfd, (struct sockaddr*)&cliaddr, (unsigned int *)&sizeof(struct sockaddr_in));
         //int new_fd=accept(sockfd, (struct sockaddr *)&cliaddr, (socklen_t *)&sizeof(struct sockaddr_in));
         //int	accept(int, struct sockaddr * __restrict, socklen_t * __restrict)
