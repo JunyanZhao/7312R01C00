@@ -18,9 +18,85 @@
 #define PORT 1025
 #define MAXDATASIZE 5000
 using namespace std;
+long talkFriendID = 0;
+//char ID[16];
+string strID;
+void* recvMsg(void* arg)
+{
+    int sockfd = (int)(*(int*)arg);
+    //cout<<"recv from sockfd: "<<sockfd<<endl;
+    ssize_t recvMsgLen = 0;
+    char buf[1024] = {0};
+    while (1) {
+        //cout<<"recv: ";
+        recvMsgLen = recv(sockfd, buf, 1024, 0);
+        if (-1 == recvMsgLen) {
+            perror("recv error");
+            close(sockfd);
+        }
+        cout<<buf<<endl;
+    }
+    
+    return NULL;
+}
+
+void* sendMsg(void* arg)
+{
+    int sockfd = (int)(*(int*)arg);
+    ssize_t res = 0;
+    char buf[1024] = {0};
+    //long userID = 0;
+    string str;
+    string strMsg;
+    string strSentToID;
+    unsigned long SendToID = 0;
+    unsigned int index = 0;
+    while (1) {
+        cout<<"input friend ID to send"<<endl;
+        cin>>strSentToID;
+        if (strSentToID.size()>=16) {
+            continue;
+        }
+        sscanf(strSentToID.c_str(), "%ld", &SendToID);
+        index = 0;
+        while (strSentToID[index] != '\0') {
+            buf[index] = strSentToID[index];
+            ++index;
+        }
+        buf[index++] = ':';
+        for (; index<16; ++index) {
+            buf[index] = '>';
+        }
+        for (index=16; index<16+strID.size(); ++index) {
+            buf[index] = strID[index-16];
+        }
+        buf[index++] = ':';
+        for (; index<16+16; ++index) {
+            buf[index] = '>';
+        }
+        cout<<"input msg to send"<<endl;
+        cin>>strMsg;
+        //getline(cin, strMsg);
+        for (index=32; index<32+strMsg.size(); ++index) {
+            buf[index] = strMsg[index-32];
+        }
+        buf[index] = '\0';
+        cout<<"send: "<<buf<<endl;
+        res = send(sockfd, buf, 1024, 0);
+        if (-1 == res) {
+            perror("send error");
+        }
+    }
+    
+    return NULL;
+}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     std::cout << "Hello, World! The client is starting! \n";
+    cout<<"input your ID"<<endl;
+    cin>>strID;
+    cout<<"your ID is "<<strID<<endl;
     int sockfd;
     char buf[1024];
     struct sockaddr_in srvaddr;
@@ -32,7 +108,6 @@ int main(int argc, const char * argv[]) {
         
     }
     bzero(&srvaddr, sizeof(srvaddr));
-    
     srvaddr.sin_family = AF_INET;
     srvaddr.sin_port=htons(1025);
     srvaddr.sin_addr.s_addr = htonl(INADDR_ANY); //#include <arpa/inet.h>
@@ -44,40 +119,30 @@ int main(int argc, const char * argv[]) {
     
     cout<<"connect to server"<<endl;
     
-    unsigned int len = 0;
-    /*
-    while (1) {
-        if ((len=recv(sockfd, buf, MAXDATASIZE, 0)) == -1) {
-            perror("recv error");
-            continue;
-        }
-        buf[len] = '\0';
-        cout<<buf<<endl;
-    }
-    */
-    
-    /*循环的发送接收信息并打印接收信息（可以按需发送）--recv返回接收到的字节数，send返回发送的字节数*/
-    while(1)
+    ssize_t len = 0;
+    ssize_t res = 0;
+    res = send(sockfd, strID.c_str(), strID.size(), 0);
+    if (-1 == res)
     {
-        printf("Enter string to send:");
-        //memset_s(buf, 1024, 0, 1024);
-        string str;
-        getline(cin, str);
-        if(str == "quit")
+        while (res != -1)
         {
-            cout<<"send close"<<endl;
-            len=send(sockfd,str.c_str(),str.size(),0);
-            break;
+            //perror("send error");
+            cout<<"please retry"<<endl;
+            cin>>strID;
+            res = send(sockfd, strID.c_str(), strID.size(), 0);
         }
-        if (str.size() == 0) {
-            continue;
-        }
-        cout<<"sending..."<<endl;
-           len=send(sockfd,str.c_str(),str.size(),0);
-           //len=recv(sockfd,buf,5000,0);
-           //buf[len]='/0';
-           //printf("received:%s/n",buf);
-        cout<<"sending success..."<<endl;
+    }
+    pid_t pid;
+    pthread_t threadID;
+    if (pthread_create(&threadID, NULL, recvMsg, &sockfd) != 0) {
+        perror("create thread error");
+    }
+    if (pthread_create(&threadID, NULL, sendMsg, &sockfd) != 0) {
+        perror("create thread error");
+    }
+    while (1) {
+        sleep(10);
+        continue;
     }
     
     /*关闭套接字*/
