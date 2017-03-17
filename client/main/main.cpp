@@ -15,6 +15,7 @@
 #include <unistd.h>
 #include <string>
 #include <stdio.h>
+#include "../CParseXML/CParseXML.hpp"
 
 #define PORT 1025
 #define MAXDATASIZE 5000
@@ -93,6 +94,8 @@ void* sendMsg(void* arg)
 }
 
 int main(int argc, const char * argv[]) {
+    CParseXML cparse;
+    cparse.openXMLFile();
     std::cout << "Hello, World! The client is starting! \n";
     cout<<"input your ID"<<endl;
     getline(cin, strID);

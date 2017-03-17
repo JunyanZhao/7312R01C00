@@ -20,6 +20,8 @@ public:
     ~CParseXML();
     
 public:
+    void openXMLFile();
+    void closeXMLFile();
     
 private:
     TiXmlDocument m_TixmlDoc;

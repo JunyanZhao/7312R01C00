@@ -1,3 +1,5 @@
-<head>
-	<version version="1.0"></version>
+<head version="1.0">
+    <IP>
+        <item ip="127.0.0.1"></item>
+    </IP>
 </head>	
