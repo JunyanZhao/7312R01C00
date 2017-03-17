@@ -14,13 +14,14 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <string>
+#include <stdio.h>
 
 #define PORT 1025
 #define MAXDATASIZE 5000
 using namespace std;
 long talkFriendID = 0;
-//char ID[16];
 string strID;
+string strDisplayMsg;
 void* recvMsg(void* arg)
 {
     int sockfd = (int)(*(int*)arg);
@@ -28,13 +29,13 @@ void* recvMsg(void* arg)
     ssize_t recvMsgLen = 0;
     char buf[1024] = {0};
     while (1) {
-        //cout<<"recv: ";
         recvMsgLen = recv(sockfd, buf, 1024, 0);
         if (-1 == recvMsgLen) {
             perror("recv error");
             close(sockfd);
         }
-        cout<<buf<<endl;
+        cout<<"massge: "<<buf<<endl;
+        cout<<strDisplayMsg<<endl;
     }
     
     return NULL;
@@ -45,15 +46,15 @@ void* sendMsg(void* arg)
     int sockfd = (int)(*(int*)arg);
     ssize_t res = 0;
     char buf[1024] = {0};
-    //long userID = 0;
     string str;
     string strMsg;
     string strSentToID;
     unsigned long SendToID = 0;
     unsigned int index = 0;
     while (1) {
-        cout<<"input friend ID to send"<<endl;
-        cin>>strSentToID;
+        cout<<"input friend ID to send:"<<endl;
+        strDisplayMsg.assign("input friend ID to send:");
+        getline(cin, strSentToID);
         if (strSentToID.size()>=16) {
             continue;
         }
@@ -74,9 +75,9 @@ void* sendMsg(void* arg)
         for (; index<16+16; ++index) {
             buf[index] = '>';
         }
-        cout<<"input msg to send"<<endl;
-        cin>>strMsg;
-        //getline(cin, strMsg);
+        cout<<"input msg to send:"<<endl;
+        strDisplayMsg.assign("input msg to send:");
+        getline(cin, strMsg);
         for (index=32; index<32+strMsg.size(); ++index) {
             buf[index] = strMsg[index-32];
         }
@@ -92,11 +93,9 @@ void* sendMsg(void* arg)
 }
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
     std::cout << "Hello, World! The client is starting! \n";
     cout<<"input your ID"<<endl;
-    cin>>strID;
-    cout<<"your ID is "<<strID<<endl;
+    getline(cin, strID);
     int sockfd;
     char buf[1024];
     struct sockaddr_in srvaddr;
@@ -110,7 +109,11 @@ int main(int argc, const char * argv[]) {
     bzero(&srvaddr, sizeof(srvaddr));
     srvaddr.sin_family = AF_INET;
     srvaddr.sin_port=htons(1025);
-    srvaddr.sin_addr.s_addr = htonl(INADDR_ANY); //#include <arpa/inet.h>
+    srvaddr.sin_addr.s_addr = inet_addr("127.0.0.1"); //#include <arpa/inet.h>
+    if ((in_addr_t)-1 == srvaddr.sin_addr.s_addr) {
+        perror("IP error");
+        exit(1);
+    }
     //srvaddr.sin_addr.s_addr = INADDR_ANY;
     if (connect(sockfd, (const struct sockaddr *)&srvaddr, sizeof(struct sockaddr)) == -1) {
         perror("connect error");
@@ -132,7 +135,7 @@ int main(int argc, const char * argv[]) {
             res = send(sockfd, strID.c_str(), strID.size(), 0);
         }
     }
-    pid_t pid;
+    //pid_t pid;
     pthread_t threadID;
     if (pthread_create(&threadID, NULL, recvMsg, &sockfd) != 0) {
         perror("create thread error");
@@ -141,7 +144,7 @@ int main(int argc, const char * argv[]) {
         perror("create thread error");
     }
     while (1) {
-        sleep(10);
+        sleep(60);
         continue;
     }
     
